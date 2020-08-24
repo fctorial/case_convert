@@ -1,0 +1,16 @@
+<idea-plugin>
+    <id>fctorial.case_converter</id>
+    <name>Case Converter</name>
+    <version>0.9</version>
+    <idea-version since-build="162" until-build="201.*" />
+    <description>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</description>
+    <vendor email="fctorial@gmail.com" url="https://github.com/fctorial">Sagar Tiwari</vendor>
+
+    <depends>com.intellij.modules.lang</depends>
+    <actions>
+        <action id="fctorial.camel_case" text="Convert to Camel Case" class="CamelCase"/>
+        <action id="fctorial.cabab_case" text="Convert to Cabab Case" class="CababCase"/>
+        <action id="fctorial.pascal_case" text="Convert to Pascal Case" class="PascalCase"/>
+        <action id="fctorial.snake_case" text="Convert to Snake Case" class="SnakeCase"/>
+    </actions>
+</idea-plugin>
