@@ -6,6 +6,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.ui.MessageType
 import com.intellij.psi.PsiDocumentManager
+import com.intellij.psi.PsiNameIdentifierOwner
+import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.refactoring.RefactoringFactory
 
 val ng = NotificationGroup("Case Convertor", NotificationDisplayType.BALLOON)
@@ -32,8 +34,9 @@ abstract class BaseAction : AnAction() {
         val orig = elem.node.text
         val parts = parseWord(orig)
         val new = processParts(parts)
-        if (! elem.isWritable) return "read only reference"
-        RefactoringFactory.getInstance(project).createRename(elem, processParts(parts)).run()
+        
+        val typedElem = PsiTreeUtil.getParentOfType(elem, PsiNameIdentifierOwner::class.java) ?: return "TODO"
+        RefactoringFactory.getInstance(project).createRename(typedElem, processParts(parts)).run()
         return "renamed $orig to $new"
     }
 
